@@ -1,0 +1,46 @@
+/*
+ * Device Tree Overlay: Actinius Icarus / Nordic nRF9160-DK
+ *
+ * Maps the physical button to the sw0 alias used in main.c.
+ *
+ * Icarus: The user button is on P0.06
+ * Thingy:91: The main button is on P0.26
+ * nRF9160-DK: Button 1 is on P0.06
+ *
+ * Uncomment the block matching your hardware.
+ */
+
+/* -----------------------------------------------------------------------
+ * Actinius Icarus / nRF9160-DK - Button on P0.06
+ * ----------------------------------------------------------------------- */
+/ {
+    aliases {
+        sw0 = &button0;
+    };
+
+    buttons {
+        compatible = "gpio-keys";
+
+        button0: button_0 {
+            gpios = <&gpio0 6 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+            label = "Presence Button";
+        };
+    };
+};
+
+/*
+ * For Nordic Thingy:91 - uncomment this block and comment the above:
+ *
+ * / {
+ *     aliases {
+ *         sw0 = &button0;
+ *     };
+ *     buttons {
+ *         compatible = "gpio-keys";
+ *         button0: button_0 {
+ *             gpios = <&gpio0 26 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+ *             label = "Presence Button";
+ *         };
+ *     };
+ * };
+ */

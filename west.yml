@@ -1,0 +1,19 @@
+# West Manifest - Presence Relay
+# Pins nRF Connect SDK version for reproducible builds
+manifest:
+  version: "0.13"
+
+  remotes:
+    - name: nrfconnect
+      url-base: https://github.com/nrfconnect
+
+  projects:
+    - name: nrf
+      remote: nrfconnect
+      revision: v2.6.1       # Pin to a stable NCS release
+      import:
+        # Pull in Zephyr and all NCS dependencies
+        - path: west.yml
+
+  self:
+    path: presence_relay
